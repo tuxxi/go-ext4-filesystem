@@ -348,7 +348,7 @@ func (ext4 *FileSystem) Open(name string) (fs.File, error) {
 
 		// Resolve symlinks
 		if dir.inode.IsSymlink() {
-			link, err := ext4.ReadLink(name)
+			link, err := ext4.ReadLink(dir.name)
 			if err != nil {
 				return nil, xerrors.Errorf("failed to read link: %w", err)
 			}
